@@ -1,0 +1,12 @@
+{
+  "name": "nexmo/sms-watson-sentiment-php",
+  "description": "PHP script for callback to return sentiment analysis from IBM Watson.",
+  "minimum-stability": "stable",
+  "license": "mit",
+  "authors": [
+    {
+      "name": "Adam Culp",
+      "email": "adam.culp@vonage.com"
+    }
+  ]
+}
