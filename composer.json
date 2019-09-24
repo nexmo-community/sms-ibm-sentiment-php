@@ -8,5 +8,11 @@
       "name": "Adam Culp",
       "email": "adam.culp@vonage.com"
     }
-  ]
+  ],
+  "require": {
+    "guzzlehttp/guzzle": "6.3.3",
+    "slim/slim": "4.2.0",
+    "slim/psr7": "0.5.0",
+    "vlucas/phpdotenv": "3.5.x-dev"
+  }
 }
