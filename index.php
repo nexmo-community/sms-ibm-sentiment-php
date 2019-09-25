@@ -31,7 +31,7 @@ $app->any('/message/[{content}]', function (Request $request, Response $response
         return $response->withStatus(405);
     }
 
-    $result = $client->request('GET', $url, ['auth' => ['apikey', $_ENV['TONE_ANALYZER_IAM_APIKEY']], '' => '' ]);
+    $result = $client->request('GET', $url, ['auth' => ['apikey', $_ENV['TONE_ANALYZER_IAM_APIKEY']]]);
 
     $data = json_decode($result->getBody());
 
