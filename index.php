@@ -13,7 +13,7 @@ $app = AppFactory::create();
 Dotenv\Dotenv::create(__DIR__)->load();
 
 // allow any request, return error on non-POST
-$app->any('/message[/]', function (Request $request, Response $response, array $args) {
+$app->any('/message[/]', function (Request $request, Response $response) {
 
     if ($request->getMethod() != 'POST') {
         return $response->withStatus(405);
