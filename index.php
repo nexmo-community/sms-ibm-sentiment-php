@@ -13,26 +13,22 @@ $app = AppFactory::create();
 Dotenv\Dotenv::create(__DIR__)->load();
 
 // route allows any GET or POST request
-$app->any('/message/[{content}]', function (Request $request, Response $response, array $args) {
+$app->any('/message[/]', function (Request $request, Response $response, array $args) {
 
-    $method = $request->getMethod();
-    $client = new Client();
-
-    $url = $_ENV['TONE_ANALYZER_URL'] . '/v3/tone?version=2017-09-21&text=';
-
-    // is this a POST or GET, handle accordingly otherwise not allowed
-    if ($method == "POST") {
-        $body = $request->getParsedBody();
-
-        $url .= urlencode($body['content']);
-    } elseif ($method == "GET") {
-        $url .= urlencode($args['content']);
-    } else {
+    if ($request->getMethod() != 'POST') {
         return $response->withStatus(405);
     }
 
+    $client = new Client();
+
+    $body = json_decode($request->getBody());
+
     // Make request to Watson service, return with proper Content-Type
-    $result = $client->request('GET', $url, ['auth' => ['apikey', $_ENV['TONE_ANALYZER_IAM_APIKEY']]]);
+    $result = $client->request(
+        'GET',
+        $_ENV['TONE_ANALYZER_URL'] . '/v3/tone?version=2017-09-21&text=' . urlencode($body->text),
+        ['auth' => ['apikey', $_ENV['TONE_ANALYZER_IAM_APIKEY']]]
+    );
 
     $contentType = $result->getHeaderLine('Content-Type') ?: 'application/json';
 
