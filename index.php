@@ -31,13 +31,14 @@ $app->any('/message/[{content}]', function (Request $request, Response $response
         return $response->withStatus(405);
     }
 
+    // Make request to Watson service, return with proper Content-Type
     $result = $client->request('GET', $url, ['auth' => ['apikey', $_ENV['TONE_ANALYZER_IAM_APIKEY']]]);
 
-    $data = json_decode($result->getBody());
+    $contentType = $result->getHeaderLine('Content-Type') ?: 'application/json';
 
-    $response->getBody()->write(json_encode($data));
+    $response = $response->withHeader('Content-Type', $contentType);
 
-    return $response->withHeader('Content-Type', 'application/json');
+    return $response->withBody($result->getBody());
 });
 
 $app->run();
