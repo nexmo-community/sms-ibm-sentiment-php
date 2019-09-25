@@ -26,7 +26,7 @@ $app->any('/message[/]', function (Request $request, Response $response, array $
     // Make request to Watson service, return with proper Content-Type
     $result = $client->request(
         'GET',
-        $_ENV['TONE_ANALYZER_URL'] . '/v3/tone?version=2017-09-21&text=' . urlencode($body->text),
+        $_ENV['TONE_ANALYZER_URL'] . '?version=2017-09-21&text=' . urlencode($body->text),
         ['auth' => ['apikey', $_ENV['TONE_ANALYZER_IAM_APIKEY']]]
     );
 
