@@ -1,0 +1,6 @@
+{
+    "name": "Nexmo-Community sms-ibm-sentiment-php example",
+    "description": "An example PHP callback script using SlimPHP to leverage Nexmo SMS sentiment analysis with the IBM Watson service.",
+    "repository": "https://github.com/nexmo-community/sms-ibm-sentiment-php",
+    "keywords": ["php", "ibm", "sentiment"]
+}
