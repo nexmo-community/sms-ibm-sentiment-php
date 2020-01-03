@@ -2,13 +2,7 @@
 
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://nexmo.dev/sms-ibm-sentiment-php-heroku)
 
-PHP script for callback to return sentiment analysis from IBM Watson
-composer require slim/slim slim/psr7 guzzlehttp/guzzle vlucas/phpdotenv
-
-
-This example uses IBM Tone Analyzer to analyze SMS messages and determine the sentiment of the text.
-
-SMS Messages sent through Nexmo will be sent to IBM Tone Analyzer and a series of scores and tones are returned.
+PHP script for callback to return sentiment analysis from the IBM Tone Analyzer to grade the contents of an SMS message sent through a Nexmo number. This example script uses Composer to include slim/slim, slim/psr7, guzzlehttp/guzzle, and vlucas/phpdotenv.
 
 ## IBM Tone Analyzer Service
 
@@ -26,7 +20,7 @@ Register for the [IBM Tone Analyzer service](https://console.bluemix.net/catalog
 
 ## Running the App
 
-This sample app uses a `.env` file to provide the API key and URL.
+This sample app uses a `.env` file to provide the API key and URL to the IBM Tone Analyzer API.
 
 Copy the provided `.env.example` file to a new file called `.env`:
 
@@ -51,11 +45,11 @@ To run the app using Docker-Compose, run the following command in a terminal:
 docker-compose up
 ```
 
-This will create a new image with all the dependencies, installed via Composer, and run it at http://localhost:3000.
+This will create a new image with all the dependencies, installed via Composer, and serve it from http://localhost:8080.
 
 ### PHP Built-in Webserver Method
 
-Using this method requires us to run Composer to install dependencies.
+Alternatively, it can be ran using the PHP built-in web server for testing purposes. This method requires us to run Composer for installation of dependencies.
 
 #### Use Composer to install dependencies
 
@@ -67,7 +61,7 @@ composer install
 
 #### Launching the PHP built-in webserver
 
-To run the app using php, run the following command in a terminal:
+To serve the app run the following command in a terminal:
 
 ```
 php -S localhost:8080
