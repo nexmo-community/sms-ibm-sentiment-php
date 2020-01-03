@@ -12,7 +12,7 @@ $app = AppFactory::create();
 // load .env content to $_ENV
 Dotenv\Dotenv::create(__DIR__)->load();
 
-// allow any request, return error on non-POST
+// allow any request, return error on non-POST methods
 $app->any('/message[/]', function (Request $request, Response $response) {
 
     if ($request->getMethod() != 'POST') {
