@@ -37,21 +37,9 @@ TONE_ANALYZER_URL=
 
 Also, expose the application to the internet using tools like [ngrok](https://ngrok.com/). To see how, [check out this guide](https://www.nexmo.com/blog/2017/07/04/local-development-nexmo-ngrok-tunnel-dr/).
 
-### Docker Method
+### Use Composer to install dependencies
 
-To run the app using Docker-Compose, run the following command in a terminal:
-
-```
-docker-compose up
-```
-
-This will create a new image with all the dependencies, installed via Composer, and serve it from http://localhost:8080.
-
-### PHP Built-in Webserver Method
-
-Alternatively, it can be ran using the PHP built-in web server for testing purposes. This method requires us to run Composer for installation of dependencies.
-
-#### Use Composer to install dependencies
+Both methods of serving the app, shown below, do require the use of Composer to install dependencies and set up the autoloader.
 
 Assuming a Composer global installation. [https://getcomposer.org/doc/00-intro.md#globally](https://getcomposer.org/doc/00-intro.md#globally)
 
@@ -59,7 +47,21 @@ Assuming a Composer global installation. [https://getcomposer.org/doc/00-intro.m
 composer install
 ```
 
-#### Launching the PHP built-in webserver
+#### Docker Method
+
+To run the app using Docker-Compose, run the following command in a terminal:
+
+```
+docker-compose up
+```
+
+This will create a new container and serve it from http://localhost:8080.
+
+#### PHP Built-in Webserver Method
+
+Alternatively, it can be ran using the PHP built-in web server for testing purposes. This method requires us to run Composer for installation of dependencies.
+
+##### Launching the PHP built-in webserver
 
 To serve the app run the following command in a terminal:
 
